@@ -1,6 +1,6 @@
 // ========================== PAQUETES ============================
 object paquete{
-	var destino = null
+	//var destino = null    // laMatrix
 	var estaPagado = false
 
 
@@ -10,34 +10,30 @@ object paquete{
 		estaPagado = true
 	}
 
-	method precio(){
-		return destino.precio()
-	}
+	//method precio() = destino.precio()
 
-	method puedeSerEntregadoPor(empleado){
-		return estaPagado && destino.reestriccionDe(empleado)
-	}
+	method precioHacia(destino) = destino.precio()
 
-	method destinoA(_destino){
-		destino = _destino
-	}
+	//method puedeSerEntregadoPor(empleado) = estaPagado && destino.reestriccionDe(empleado)
+
+	method puedeSerEntregadoPorA(empleado, destino) = estaPagado && destino.reestriccionDe(empleado)
+
+	//method destinoA(_destino){
+	//	destino = _destino
+	//}
 }
 
 // ===================== DESTINOS =======================
 object laMatrix{
 	method precio() = 500
 
-    method reestriccionDe(empleado){
-        return empleado.puedeLlamar()
-    }
+    method reestriccionDe(empleado) = empleado.puedeLlamar()
 }
 
 object puenteDeBrooklyn{
 	method precio() = 150
 
-    method reestriccionDe(empleado){
-        return empleado.peso() < 1000
-    }
+    method reestriccionDe(empleado) = empleado.peso() < 1000
 }
 
 // ==================== EMPLEADOS =====================
@@ -57,7 +53,7 @@ object jeanGray {
 }
 
 object saraConnor {
-	var vehiculo = null
+	var vehiculo = null   //laMatrix
 	var peso = 0
 
 

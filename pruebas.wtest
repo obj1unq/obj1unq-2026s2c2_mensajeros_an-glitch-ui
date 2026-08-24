@@ -1,5 +1,6 @@
 import mensajeros.*
 
+// está en rojo porque se comentó todo lo que necesita este archivo, ignorarlo..
 
 test "Pago del paquete" {
     paquete.destinoA(laMatrix)

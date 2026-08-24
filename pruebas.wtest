@@ -1,0 +1,31 @@
+import mensajeros.*
+
+// está en rojo porque se comentó todo lo que necesita este archivo, ignorarlo..
+
+test "Pago del paquete" {
+    paquete.destinoA(laMatrix)
+    assert.notThat(paquete.estaPagado())
+    paquete.pagar()
+    assert.that(paquete.estaPagado())
+
+    assert.equals(500, paquete.precio())
+    
+}
+
+test "Entregado por _ hacia _" {
+    paquete.destinoA(laMatrix)
+    assert.notThat(paquete.puedeSerEntregadoPor(neo))// El paquete de George que no está pago no puede ser llevado por Neo a la matrix.
+    
+    paquete.pagar()
+    assert.that(paquete.puedeSerEntregadoPor(jeanGray))// El paquete de George que sí está pago puede ser llevado por Jean a la matrix
+    
+    paquete.destinoA(puenteDeBrooklyn)
+    saraConnor.peso(70)
+    camion.acoplados(1)
+    saraConnor.vehiculo(camion)
+    assert.notThat(paquete.puedeSerEntregadoPor(saraConnor))// El paquete de George que sí está pago no puede ser llevado por Sara (que pesa 70kg) a Brooklyn si es que utiliza un camión con un acoplado .
+    
+    saraConnor.vehiculo(auto)
+    assert.that(paquete.puedeSerEntregadoPor(saraConnor))// La entrega anterior puede hacerse si Sara usa una moto                      auto en vez de moto?
+}
+
